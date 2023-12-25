@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`curry - proxy should check arguments 1`] = `"recipe is not a function"`;
+
+exports[`curry - proxy should check arguments 2`] = `"recipe is not a function"`;
+
+exports[`curry - proxy should check arguments 3`] = `"recipe is not a function"`;
+
+exports[`curry - proxy should check arguments 4`] = `"patchListener is not a function"`;

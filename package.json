@@ -1,0 +1,65 @@
+{
+  "name": "mutative-compat",
+  "packageManager": "yarn@4.0.2",
+  "version": "0.0.0",
+  "description": "A compatibility layer for mutative and immer",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/immer.d.mts",
+        "default": "./dist/immer.mjs"
+      },
+      "require": {
+        "types": "./dist/immer.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "types": "./dist/immer.d.ts",
+      "module": "./dist/immer.legacy-esm.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/immer.legacy-esm.js",
+  "react-native": "./dist/immer.legacy-esm.js",
+  "sideEffects": false,
+  "scripts": {
+    "dts": "node scripts/dts.js",
+    "build": "rm -rf dist && tsup",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exuanbo/mutative-compat.git"
+  },
+  "keywords": [
+    "immer",
+    "mutative",
+    "immutable",
+    "mutable"
+  ],
+  "author": "exuanbo <exuanbo@protonmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/exuanbo/mutative-compat/issues"
+  },
+  "homepage": "https://github.com/exuanbo/mutative-compat#readme",
+  "peerDependencies": {
+    "mutative": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/deep-freeze": "^0",
+    "@types/jest": "^29.5.11",
+    "@types/lodash": "^4",
+    "deep-freeze": "^0.0.1",
+    "immer": "^10.0.3",
+    "jest": "^29.7.0",
+    "lodash": "^4.17.21",
+    "mutative": "^1.0.2",
+    "prettier": "^3.1.1",
+    "redux": "^5.0.1",
+    "spec.ts": "^1.1.3",
+    "ts-jest": "^29.1.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}

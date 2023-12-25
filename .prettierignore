@@ -1,0 +1,6 @@
+.yarn/
+.yarnrc.yml
+dist/
+
+__tests__/
+src/immer.d.ts
