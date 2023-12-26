@@ -1,7 +1,7 @@
 {
   "name": "mutative-compat",
   "packageManager": "yarn@4.0.2",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A compatibility layer for mutative and immer",
   "exports": {
     ".": {
