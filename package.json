@@ -2,7 +2,7 @@
   "name": "mutative-compat",
   "packageManager": "yarn@4.0.2",
   "version": "0.0.1",
-  "description": "A compatibility layer for mutative and immer",
+  "description": "A blazing fast Immer implementation using Mutative",
   "exports": {
     ".": {
       "import": {
@@ -22,10 +22,6 @@
   "module": "./dist/immer.legacy-esm.js",
   "react-native": "./dist/immer.legacy-esm.js",
   "sideEffects": false,
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
     "dts": "node scripts/dts.js",
     "build": "rm -rf dist && tsup",
@@ -47,6 +43,10 @@
     "url": "https://github.com/exuanbo/mutative-compat/issues"
   },
   "homepage": "https://github.com/exuanbo/mutative-compat#readme",
+  "files": [
+    "dist",
+    "src"
+  ],
   "peerDependencies": {
     "mutative": "^1.0.0"
   },
