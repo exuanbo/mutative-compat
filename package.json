@@ -22,6 +22,10 @@
   "module": "./dist/immer.legacy-esm.js",
   "react-native": "./dist/immer.legacy-esm.js",
   "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dts": "node scripts/dts.js",
     "build": "rm -rf dist && tsup",
