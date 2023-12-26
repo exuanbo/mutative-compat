@@ -4,23 +4,25 @@ import { defineConfig, Options } from "tsup"
 
 export default defineConfig((options) => {
   const commonOptions: Partial<Options> = {
-    entry: ["src/immer.js"],
+    entry: {
+      immer: "src/immer.js",
+    },
+    platform: "neutral",
     sourcemap: true,
     ...options,
   }
 
   const productionOptions: Partial<Options> = {
-    define: {
-      "process.env.NODE_ENV": JSON.stringify("production"),
-    },
     minify: true,
+    replaceNodeEnv: true,
   }
 
   return [
-    // DTS only
     {
       ...commonOptions,
-      dts: { only: true },
+      dts: {
+        only: true,
+      },
       format: ["esm", "cjs"],
     },
     // ESM, standard bundler dev, embedded `process` references
@@ -71,12 +73,12 @@ export default defineConfig((options) => {
       onSuccess() {
         return fs.writeFile(
           "dist/cjs/index.js",
-          `'use strict'
+          `"use strict";
 
 if (process.env.NODE_ENV === "production") {
-  module.exports = require("./immer.production.js")
+  module.exports = require("./immer.production.js");
 } else {
-  module.exports = require("./immer.js")
+  module.exports = require("./immer.js");
 }`,
         )
       },
