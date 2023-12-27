@@ -15,6 +15,9 @@ npm install mutative-compat mutative
 
 # Yarn
 yarn add mutative-compat mutative
+
+# pnpm
+pnpm add mutative-compat mutative
 ```
 
 ~~Optional but useful 😈:~~
@@ -43,14 +46,14 @@ yarn add mutative-compat mutative
 }
 ```
 
-This way you can replace `immer` with `mutative` in some opinionated libraries like `redux-toolkit`.
+This way you can replace `immer` with `mutative` in some opinionated libraries like Redux Toolkit.
 
-## Differences from `Immer`
+## Differences from Immer
 
-- The `freeze()` function will only freeze shallowly, the second argument `deep?: boolean` is omitted.
-- In nested `produce()` calls, the inner results will never be frozen even if they're not used in the outer recipe.
+- The `freeze` function will only freeze shallowly, the second argument `deep?: boolean` is omitted.
+- In nested `produce` calls, the inner results will never be frozen even if they're not used in the outer recipe.
 
-For other minor differences ~~(you probably will never notice them)~~, see [mutative/test/immer-non-support.test.ts](https://github.com/unadlib/mutative/blob/main/test/immer-non-support.test.ts)
+For other differences ~~(that you probably will never notice)~~, see [mutative/test/immer-non-support.test.ts](https://github.com/unadlib/mutative/blob/main/test/immer-non-support.test.ts)
 
 ## License
 
