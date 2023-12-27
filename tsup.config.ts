@@ -13,6 +13,9 @@ export default defineConfig((options) => {
   }
 
   const productionOptions: Partial<Options> = {
+    entry: {
+      "immer.production": "src/immer.js",
+    },
     minify: true,
     replaceNodeEnv: true,
   }
@@ -20,68 +23,37 @@ export default defineConfig((options) => {
   return [
     {
       ...commonOptions,
-      dts: {
-        only: true,
-      },
       format: ["esm", "cjs"],
+      dts: true,
     },
-    // ESM, standard bundler dev, embedded `process` references
     {
       ...commonOptions,
       format: "esm",
-      onSuccess() {
-        return fs.copyFile(
-          "node_modules/immer/src/types/index.js.flow",
-          "dist/cjs/index.js.flow",
-        )
-      },
-    },
-    // ESM, Webpack 4 support. Target ES2018 syntax to compile away optional chaining and spreads
-    {
-      ...commonOptions,
-      entry: {
-        "immer.legacy-esm": "src/immer.js",
-      },
-      format: "esm",
-      outExtension: () => ({ js: ".js" }),
       target: "es2017",
+      legacyOutput: true,
     },
-    // ESM for use in browsers. Minified, with `process` compiled away
     {
       ...commonOptions,
       ...productionOptions,
-      entry: {
-        "immer.production": "src/immer.js",
-      },
-      format: "esm",
-    },
-    // CJS development
-    {
-      ...commonOptions,
-      format: "cjs",
-      outDir: "dist/cjs",
-    },
-    // CJS production
-    {
-      ...commonOptions,
-      ...productionOptions,
-      entry: {
-        "immer.production": "src/immer.js",
-      },
-      format: "cjs",
-      outDir: "dist/cjs",
-      onSuccess() {
-        return fs.writeFile(
-          "dist/cjs/index.js",
-          `"use strict";
+      format: ["esm", "cjs"],
+      async onSuccess() {
+        await Promise.all([
+          fs.copyFile(
+            "node_modules/immer/dist/cjs/index.js.flow",
+            "dist/index.js.flow",
+          ),
+          fs.writeFile(
+            "dist/index.js",
+            `"use strict";
 
 if (process.env.NODE_ENV === "production") {
   module.exports = require("./immer.production.js");
 } else {
   module.exports = require("./immer.js");
 }`,
-        )
+          ),
+        ])
       },
     },
-  ] as const
+  ]
 })

@@ -11,16 +11,16 @@
       },
       "require": {
         "types": "./dist/immer.d.ts",
-        "default": "./dist/cjs/index.js"
+        "default": "./dist/index.js"
       },
       "types": "./dist/immer.d.ts",
-      "module": "./dist/immer.legacy-esm.js"
+      "module": "./dist/esm/immer.js"
     }
   },
-  "types": "./dist/index.d.ts",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/immer.legacy-esm.js",
-  "react-native": "./dist/immer.legacy-esm.js",
+  "types": "./dist/immer.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/immer.js",
+  "react-native": "./dist/esm/immer.js",
   "sideEffects": false,
   "scripts": {
     "dts": "node scripts/dts.js",
