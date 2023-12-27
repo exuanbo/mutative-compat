@@ -104,19 +104,19 @@ export class Immer {
     }
   }
 
-  _finalizers = new WeakMap()
+  static _finalizers = new WeakMap()
 
   createDraft(state) {
     const [draft, finalize] = create(state, {
       ...this._options,
       enablePatches: true,
     })
-    this._finalizers.set(draft, finalize)
+    Immer._finalizers.set(draft, finalize)
     return draft
   }
 
   finishDraft(draft, patchListener) {
-    const finalize = this._finalizers.get(draft)
+    const finalize = Immer._finalizers.get(draft)
     if (!finalize) {
       throw new Error(
         "First argument to `finishDraft` must be a draft returned by `createDraft`",
