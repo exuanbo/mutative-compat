@@ -61,15 +61,9 @@ export class Immer {
     }
   }
 
-  _curryProduce(defaultBase, recipe, producer) {
-    return function curriedProduce(base = defaultBase, ...args) {
-      return producer(base, (draft) => recipe.call(this, draft, ...args))
-    }
-  }
-
   produce = (base, recipe, patchListener) => {
     if (typeof base === "function" && typeof recipe !== "function") {
-      return this._curryProduce(recipe, base, this.produce)
+      return curryProduce(this.produce, base, recipe)
     }
     Immer._nestedDepth++
     try {
@@ -90,7 +84,7 @@ export class Immer {
 
   produceWithPatches = (base, recipe) => {
     if (typeof base === "function" && typeof recipe !== "function") {
-      return this._curryProduce(recipe, base, this.produceWithPatches)
+      return curryProduce(this.produceWithPatches, base, recipe)
     }
     Immer._nestedDepth++
     try {
@@ -132,6 +126,12 @@ export class Immer {
       return apply(base, patches)
     }
     return apply(base, patches, this._options)
+  }
+}
+
+function curryProduce(producer, recipe, defaultBase) {
+  return function (base = defaultBase, ...args) {
+    return producer(base, (draft) => recipe.call(this, draft, ...args))
   }
 }
 
