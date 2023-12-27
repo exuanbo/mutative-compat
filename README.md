@@ -54,4 +54,4 @@ For other minor differences ~~(you probably will never notice them)~~, see [muta
 
 ## License
 
-MIT License @ 2023-Present [Xuanbo Cheng](https://github.com/exuanbo)
+[MIT License](https://github.com/exuanbo/mutative-compat/blob/main/LICENSE) @ 2023-Present [Xuanbo Cheng](https://github.com/exuanbo)
