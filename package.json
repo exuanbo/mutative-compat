@@ -2,7 +2,7 @@
   "name": "mutative-compat",
   "packageManager": "yarn@4.0.2",
   "version": "0.0.1",
-  "description": "A blazing fast Immer implementation using Mutative",
+  "description": "Mutative wrapper with full Immer API compatibility",
   "exports": {
     ".": {
       "import": {
