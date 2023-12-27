@@ -7,6 +7,9 @@ export default defineConfig((options) => {
     entry: {
       immer: "src/immer.js",
     },
+    loader: {
+      ".js": "ts",
+    },
     platform: "neutral",
     sourcemap: true,
     ...options,
