@@ -10,7 +10,7 @@ export {
 
 import { Immer } from "./core/immerClass"
 
-const immer = new Immer()
+const immer = /*#__PURE__*/ new Immer()
 
 export const produce = immer.produce
 
@@ -30,6 +30,6 @@ export { castDraft, castImmutable } from "mutative"
 
 export { Immer }
 
-export const enablePatches = () => {}
+export function enablePatches() {}
 
-export const enableMapSet = () => {}
+export function enableMapSet() {}
