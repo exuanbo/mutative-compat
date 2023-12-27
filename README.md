@@ -19,7 +19,7 @@ yarn add mutative-compat mutative
 
 ~~Optional but useful 😈:~~
 
-```json
+```json5
 // package.json
 {
   "dependencies": {
@@ -47,7 +47,7 @@ This way you can replace `immer` with `mutative` in some opinionated libraries l
 
 ## Differences from `Immer`
 
-- The `freeze()` function will only freeze the object shallowly, the second argument `deep?: boolean` is omitted.
+- The `freeze()` function will only freeze shallowly, the second argument `deep?: boolean` is omitted.
 - In nested `produce()` calls, the inner results will never be frozen even if they're not used in the outer recipe.
 
 For other minor differences ~~(you probably will never notice them)~~, see [mutative/test/immer-non-support.test.ts](https://github.com/unadlib/mutative/blob/main/test/immer-non-support.test.ts)
