@@ -5,8 +5,6 @@ import { DRAFTABLE, NOTHING } from "../internal"
 const objectCtorString = Object.prototype.constructor.toString()
 
 export class Immer {
-  static _nestedDepth = -1
-
   _autoFreeze
   _useStrictShallowCopy
 
@@ -23,8 +21,10 @@ export class Immer {
     this._useStrictShallowCopy = value
   }
 
+  static _nestedDepth = -1
+
   get _options() {
-    const autoFreeze = !Immer._nestedDepth && this._autoFreeze
+    const autoFreeze = Immer._nestedDepth <= 0 && this._autoFreeze
     const useStrictShallowCopy = this._useStrictShallowCopy
     return {
       enableAutoFreeze: autoFreeze,
